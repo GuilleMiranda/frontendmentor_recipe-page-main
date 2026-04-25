@@ -1,102 +1,116 @@
-# Frontend Mentor - Recipe page
+# Frontend Mentor - Recipe page solution
 
-![Design preview for the Recipe page coding challenge](./preview.jpg)
+This is a solution to the [Recipe page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/recipe-page-KiTsR8QQKm). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+### Screenshot
 
-## The challenge
+![](./screenshot.jpg)
 
-Your challenge is to build out this recipe page and get it looking as close to the design as possible.
+### Links
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-### Want some support on the challenge? 
+## My process
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Built with
 
-## Where to find everything
+- Semantic HTML5 markup (header, aside, main, section)
+- CSS custom properties (variables for colors and consistent styling)
+- Mobile-first workflow
+- Responsive design with media queries
+- CSS Grid for page layout
+- HTML definition lists (dl, dt, dd) for structured content
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+### What I learned
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+**Planning HTML structure before CSS is crucial:** I learned that taking time to think through the HTML structure from the start saves time later. Instead of using divs for everything, I chose semantic elements based on their meaning: `<header>` for introductory content, `<aside>` for supplementary information (preparation time), `<main>` for primary content, and `<section>` for content grouping. This foundational decision made CSS styling more intuitive and the code more maintainable.
 
-If you would like the Figma design file to gain experience using professional tools and build more accurate projects faster, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+**Semantic vs. layout purposes in HTML:** A key insight was understanding that HTML serves two purposes:
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+- **Semantic:** Using `<dl>` for definitions, `<time>` for time values, `<h1>` for main heading—these convey meaning to browsers, screen readers, and other tools
+- **Layout:** Using flexbox, grid, padding, and margins in CSS to arrange elements visually
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+For example, I used `<aside>` for the preparation time not because it visually floats to the side (that's CSS's job), but because the content is supplementary to the main recipe. This separation of concerns makes code cleaner and more professional.
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+**CSS best practices I applied:**
 
-## Using AI coding assistants
+- **Use CSS custom properties (variables)** for colors and repeated values—makes design systems maintainable
+- **Use flexbox/grid for layout** instead of floats or absolute positioning—cleaner and more responsive
+- **Mobile-first approach** with base styles for mobile and media queries only for desktop changes—easier to maintain
+- **Avoid putting presentation in HTML**—let CSS handle spacing, alignment, and styling completely
+- **Target specific elements precisely** (like `header > h1`) rather than overly broad selectors—prevents unexpected style conflicts
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+**CSS pseudo-elements (::after, ::before, ::marker):** I discovered how powerful pseudo-elements are for adding content and styling without cluttering HTML. I used them throughout this project to:
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+- Add separators and formatting with `::after` (e.g., adding ": " after definition terms)
+- Style bullet points with `::marker` to change color and size of list markers
+- Create visual separators between table rows
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+```css
+dt::after {
+  content: ": "; /* Adds colon after each term */
+}
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+dt::marker {
+  color: var(--rose-800); /* Styles the bullet point */
+  font-size: 0.75rem;
+}
 
-## Building your project
+dd::after {
+  content: "\A"; /* Adds line break */
+  white-space: pre;
+}
+```
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+**Definition lists (<dl>) for semantic structure:** I learned that `<dl>` elements are perfect for structured key-value data like preparation times and nutrition facts. Using `<dt>` for terms, `<dd>` for descriptions, and styling them properly with CSS is much better than divs or other generic elements.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+**box-sizing: border-box is essential:** Understanding `box-sizing: border-box` changed how I think about layouts. It ensures that padding and borders are included in the element's total width and height, making calculations predictable and preventing unwanted overflow:
 
-## Deploying your project
+```css
+* {
+  box-sizing: border-box; /* Width includes padding + border */
+}
+```
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+Without this, adding padding to a 100% width element would break layouts. With it, everything stays where it should be.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+**CSS custom properties (variables) for consistency:** Using CSS variables like `--brown-800` and `--rose-800` made it easy to apply the same colors throughout and maintain a consistent design system.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+### Continued development
 
-## Create a custom `README.md`
+- Explore CSS Grid more deeply for complex layouts
+- Practice accessibility features like focus states and color contrast
+- Learn how to implement animations and transitions
+- Work with more advanced responsive design patterns
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+### AI Collaboration
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+I used GitHub Copilot throughout this project. It helped me:
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+- Clarify semantic HTML structure decisions
+- Troubleshoot responsive design challenges
+- Think through CSS approach alternatives
+- Validate my solutions and suggest improvements
 
-## Submitting your solution
+The AI was especially helpful in guiding my thinking rather than just giving me answers—it asked clarifying questions that helped me understand _why_ certain approaches work better than others.
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+## Author
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [@GuilleMiranda](https://www.frontendmentor.io/profile/GuilleMiranda)
+- GitHub - [Guille Miranda](https://www.github.com/GuilleMiranda)
