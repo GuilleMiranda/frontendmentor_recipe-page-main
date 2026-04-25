@@ -6,6 +6,7 @@
   --brown-800: hsl(14, 45%, 36%);
   --rose-800: hsl(332, 51%, 32%);
   --rose-50: hsl(330, 100%, 98%);
+  --bg-color: hsl(29, 53%, 90%);
 }
 
 * {
@@ -15,7 +16,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--stone-150);
+  background-color: var(--bg-color);
   display: grid;
   place-items: center;
   font-family: Outfit, sans-serif;
